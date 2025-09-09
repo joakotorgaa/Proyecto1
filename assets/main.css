@@ -1,0 +1,93 @@
+/* CreditOrg – Landing profesional (HTML/CSS básico) */
+:root{
+  --primario:#00529b;
+  --bg:#f7f9fb;
+  --borde:#e5e7eb;
+  --texto:#0f172a;
+  --muted:#6b7280;
+  --ok:#22c55e;
+  --neg:#ef4444;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;background:var(--bg);color:var(--texto)}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:10}
+.header-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:800;color:var(--primario)}
+.logo .badge{background:var(--primario);color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.nav .btn{margin-left:8px}
+
+/* Buttons */
+.btn{padding:9px 14px;border-radius:8px;border:1px solid transparent;text-decoration:none;color:var(--texto);background:#fff;display:inline-block}
+.btn:hover{opacity:.95;transform:translateY(-1px)}
+.btn-primary{background:var(--primario);color:#fff}
+.btn-outline{border-color:var(--primario);color:var(--primario);background:transparent}
+.btn-small{padding:6px 10px;border-radius:6px}
+
+/* Containers & Cards */
+.container{max-width:1100px;margin:0 auto;padding:24px 16px}
+.card{background:#fff;border:1px solid var(--borde);border-radius:12px;padding:16px}
+.card-soft{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(2,6,23,.06)}
+
+/* Hero */
+.hero{padding:24px 16px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}
+.hero-copy h1{font-size:2rem;margin:0 0 8px}
+.hero-copy p{color:var(--muted);margin:0 0 12px}
+.hero-cta{display:flex;gap:10px;margin:14px 0 10px}
+.hero-badges{display:flex;gap:16px;flex-wrap:wrap;color:#0b4b86;font-weight:600;margin:8px 0 0;padding:0}
+.hero-badges li{list-style:none;padding:6px 10px;background:#e6f1fb;border:1px solid #cfe5fb;border-radius:999px}
+
+/* Hero side (resumen / demo cuentas) */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 12px}
+.kpi{border:1px solid var(--borde);border-radius:10px;padding:10px;text-align:center;background:#fff}
+.kpi-label{font-size:.8rem;color:var(--muted)}
+.kpi-value{font-weight:800}
+.kpi-value.ok{color:var(--ok)}
+.list{margin-top:10px}
+.list-head,.list-row{display:grid;grid-template-columns:1.4fr .8fr 1fr;gap:10px}
+.list-head{font-size:.9rem;color:#0b4b86;font-weight:700;padding:6px 0;border-bottom:1px solid var(--borde)}
+.list-body .list-row{padding:8px 0;border-bottom:1px solid #eef2f7}
+.hero-actions{display:flex;gap:8px;margin-top:12px}
+.account-cards{display:grid;gap:10px}
+.acc{border-radius:12px}
+.acc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#0b4b86}
+.acc-balance{font-weight:800;font-size:1.4rem}
+.acc-meta{font-size:.85rem;color:var(--muted)}
+.chip{background:#e6f1fb;border:1px solid #cfe5fb;border-radius:999px;padding:2px 8px}
+
+/* Secciones */
+.section-title{font-size:1.2rem;color:#0b4b86;margin:6px 0 12px}
+
+/* Acciones rápidas */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.quick{display:flex;align-items:center;gap:10px;padding:14px}
+.quick-ico{font-size:1.2rem}
+
+/* Productos */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.prod h3{margin:0 0 6px}
+.prod p{color:var(--muted);margin:0 0 10px}
+
+/* Beneficios */
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;align-items:start}
+.benefits h3{margin:0 0 6px}
+.benefits p{margin:0;color:var(--muted)}
+
+/* Testimonios */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.testi{font-style:italic}
+
+/* Footer */
+footer{background:#fff;border-top:1px solid var(--borde);margin-top:20px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.footer-links a{margin-right:12px;color:#0b4b86;text-decoration:none}
+.footer-links a:hover{text-decoration:underline}
+.muted{color:var(--muted)}
+.positivo{color:var(--ok)} .negativo{color:var(--neg)}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns:1fr}
+}
