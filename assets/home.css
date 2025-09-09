@@ -1,98 +1,31 @@
-/* CreditOrg – Home informativa estilo banco grande
-   Aislada: NO toca login/registro ni tu CSS existente */
-:root{
-  --primario:#00529b;
-  --bg:#f7f9fb;
-  --borde:#e5e7eb;
+:root {
+  --azul:#0a5bd3;
+  --gris:#f7f9fb;
+  --linea:#e5e7eb;
   --texto:#0f172a;
-  --muted:#6b7280;
-}  
-.home{background:var(--bg);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
-.home *{box-sizing:border-box}
+}
 
-/* Container & Cards */
+body.home {margin:0;font-family:system-ui, sans-serif;color:var(--texto);background:var(--gris)}
+
 .home__container{max-width:1100px;margin:0 auto;padding:24px 16px}
-.card{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(2,6,23,.05)}
-.input{width:100%;padding:10px;border:1px solid var(--borde);border-radius:10px;background:#fff}
+.card{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:18px}
 
-/* Header / Navbar */
-.home__header{background:#fff;border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:20}
-.home__header-in{display:flex;align-items:center;justify-content:space-between}
-.home__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--primario);font-weight:800}
-.home__logo-badge{background:var(--primario);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
-.home__nav{display:flex;align-items:center;gap:14px;position:relative}
-.home__nav-group{display:flex;gap:14px}
-.home__nav-item{position:relative;padding:10px 8px;border-radius:8px;cursor:pointer;color:#0b4b86;font-weight:600;text-decoration:none}
-.home__nav-item:hover{background:#f1f5f9}
-.home__nav-item.has-menu:hover .home__menu{display:grid}
-.home__menu{display:none;grid-template-columns:1fr;gap:6px;position:absolute;top:100%;left:0;margin-top:8px;background:#fff;border:1px solid var(--borde);border-radius:10px;padding:10px;min-width:220px;box-shadow:0 10px 24px rgba(2,6,23,.08)}
-.home__menu a{padding:6px 8px;border-radius:6px;color:var(--texto);text-decoration:none}
-.home__menu a:hover{background:#f1f5f9}
-.home__cta{display:flex;gap:8px}
-.btn{padding:9px 14px;border-radius:8px;border:1px solid transparent;text-decoration:none;color:var(--texto);background:#fff;display:inline-block;transition:.15s ease}
-.btn:hover{opacity:.95;transform:translateY(-1px)}
-.btn--primary{background:var(--primario);color:#fff}
-.btn--outline{border-color:var(--primario);color:var(--primario);background:transparent}
-.btn--small{padding:6px 10px;border-radius:6px}
+.home__header{background:#fff;border-bottom:1px solid var(--linea);position:sticky;top:0}
+.home__logo{font-weight:800;color:var(--azul);text-decoration:none}
+.home__nav a{margin:0 10px;text-decoration:none;color:var(--texto);font-weight:500}
+.home__cta .btn{margin-left:8px}
 
-/* Burger (mobile) */
-.home__burger{display:none;background:transparent;border:0;margin-left:8px}
-.home__burger span{display:block;width:22px;height:2px;background:#0b4b86;margin:5px 0;border-radius:2px}
-@media (max-width: 920px){
-  .home__burger{display:block}
-  .home__nav-group,.home__cta{display:none}
-  .home.nav-open .home__nav-group,
-  .home.nav-open .home__cta{display:flex;flex-direction:column;gap:10px;position:absolute;top:64px;right:16px;background:#fff;border:1px solid var(--borde);padding:12px;border-radius:12px;box-shadow:0 10px 24px rgba(2,6,23,.12)}
-}
+.btn{padding:9px 14px;border-radius:8px;text-decoration:none;display:inline-block;background:#fff;color:var(--texto);border:1px solid var(--linea)}
+.btn--primary{background:var(--azul);color:#fff;border:none}
+.btn--outline{border:1px solid var(--azul);color:var(--azul)}
+.btn--ghost{background:transparent;color:var(--texto)}
 
-/* Hero */
-.hero{padding:24px 16px}
-.hero__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-.hero__copy h1{font-size:2rem;margin:0 0 8px}
-.hero__copy p{color:var(--muted);margin:0 0 12px}
-.hero__cta{display:flex;gap:10px;margin:10px 0}
-.hero__badges{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0;padding:0}
-.hero__badges li{list-style:none;padding:6px 10px;border-radius:999px;background:#e6f1fb;border:1px solid #cfe5fb;color:#0b4b86;font-weight:600}
-.hero__promo h3{margin:0 0 8px}
-.promo__list{list-style:none;margin:0 0 10px;padding:0;color:var(--muted)}
+.home__hero{background:linear-gradient(180deg,#eaf2ff,#fff);padding:60px 0;text-align:center}
+.hero__actions{margin-top:20px}
+.hero__actions .btn{margin:0 6px}
 
-/* Secciones */
-.section-title{font-size:1.2rem;color:#0b4b86;margin:6px 0 12px}
-
-/* Somos */
-.somos__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-
-/* Productos */
-.prod__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.prod h3{margin:0 0 6px}
-.prod p{color:var(--muted);margin:0 0 10px}
-
-/* Pasos tarjeta */
-.pasos{display:grid;gap:14px}
-.paso{display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--borde);padding-bottom:12px}
-.paso:last-child{border-bottom:none}
-.paso__num{width:34px;height:34px;border-radius:50%;background:#e6f1fb;color:#0b4b86;display:flex;align-items:center;justify-content:center;font-weight:800}
-.pasos__cta{margin-top:6px}
-
-/* FAQ */
-.faq__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.faq__grid details summary{cursor:pointer;font-weight:600}
-
-/* Contacto */
-.contacto__form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.contacto__form label{font-weight:600;margin-bottom:6px;display:block}
-.contacto__form .form__actions{display:flex;gap:8px;align-items:center;margin-top:8px}
-.muted{color:var(--muted)}
-
-/* Footer */
-.home__footer{background:#fff;border-top:1px solid var(--borde);margin-top:20px}
-.home__footer-in{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.home__links a{margin-right:12px;color:#0b4b86;text-decoration:none}
-.home__links a:hover{text-decoration:underline}
-.home__copy{color:var(--muted)}
-
-/* Responsive */
-@media (max-width: 920px){
-  .hero__grid{grid-template-columns:1fr}
-  .contacto__form .grid2{grid-template-columns:1fr}
-}
+.home__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+.steps{padding-left:20px}
+.contact-form{display:grid;gap:12px;max-width:500px;margin:auto}
+.contact-form input,.contact-form textarea{padding:10px;border:1px solid var(--linea);border-radius:8px}
+.home__footer{background:#fff;border-top:1px solid var(--linea);text-align:center;padding:20px;margin-top:40px}
