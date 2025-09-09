@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=utf-8'); 
 
 $username = trim($_POST['username'] ?? '');
 $email    = trim($_POST['email'] ?? '');

@@ -3,7 +3,7 @@ session_start();
 $is_logged = !empty($_SESSION['user_id']);
 $is_admin  = !empty($_SESSION['is_admin']);
 ?>
-<!doctype html>
+<!doctype html> 
 <html lang="es">
 <head>
   <meta charset="utf-8">

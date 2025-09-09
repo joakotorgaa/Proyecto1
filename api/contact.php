@@ -11,7 +11,7 @@ $message = trim($_POST['message'] ?? '');
 if ($name === '' || $email === '' || $topic === '' || $message === '') {
   header('Location: ../index.php#contacto');
   exit;
-}
+} 
 
 if (!empty($_SESSION['user_id'])) {
   // Si está logueado, creamos ticket con el mismo flujo del sistema

@@ -1,2 +1,2 @@
 // Helpers mínimos
-function go(url){ window.location.href = url; }
+function go(url){ window.location.href = url; } 

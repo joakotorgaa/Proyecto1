@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 if(empty($_SESSION['user_id']) || empty($_SESSION['is_admin'])){ header('Location: ../login.php'); exit; }
 require_once __DIR__ . '/../api/_conn.php';
 $id = (int)($_GET['id'] ?? 0);

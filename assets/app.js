@@ -3,7 +3,7 @@ function mostrarPagina(id){
   document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('activa'));
   document.getElementById(id).classList.add('activa');
   window.scrollTo(0,0);
-}
+} 
 
 async function iniciarSesion(){
   const usuario = document.getElementById('usuario').value.trim();

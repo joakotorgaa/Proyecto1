@@ -1,6 +1,6 @@
 <?php
 session_start();
-header('Content-Type: text/html; charset=utf-8'); // redirigimos, no JSON
+header('Content-Type: text/html; charset=utf-8'); // redirigimos, no JSON 
 
 $usuario    = trim($_POST['usuario'] ?? '');
 $contrasena = (string)($_POST['contrasena'] ?? '');

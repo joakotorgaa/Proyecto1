@@ -11,7 +11,7 @@ if(empty($_SESSION['user_id']) || empty($_SESSION['is_admin'])){ header('Locatio
   <nav class="nav">
     <a class="btn" href="../user/">Panel usuario</a>
     <a class="btn btn-outline" href="../logout.php">Salir</a>
-  </nav>
+  </nav> 
 </div></header>
 <main class="container">
   <div class="card"><h2>Panel de administrador</h2><p>Gestioná usuarios y cuentas.</p></div>

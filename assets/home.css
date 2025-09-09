@@ -6,7 +6,7 @@
   --borde:#e5e7eb;
   --texto:#0f172a;
   --muted:#6b7280;
-}
+}  
 .home{background:var(--bg);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
 .home *{box-sizing:border-box}
 
