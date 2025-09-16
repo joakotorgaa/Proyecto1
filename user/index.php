@@ -1,28 +1,67 @@
-<?php
-session_start();
-if(empty($_SESSION['user_id'])){ header('Location: ../login.php'); exit; } 
-?>
-<!doctype html><html lang="es"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mi panel - CreditOrg</title>
-<link rel="stylesheet" href="../assets/main.css">
-</head><body>
-<header><div class="header-inner">
-  <a class="logo" href="../index.php"><span class="badge">CO</span> CreditOrg</a>
-  <nav class="nav">
-    <?php if(!empty($_SESSION['is_admin'])): ?><a class="btn" href="../admin/">Admin</a><?php endif; ?>
-    <a class="btn btn-outline" href="../logout.php">Salir</a>
-  </nav>
-</div></header>
-<main class="container grid grid-3">
-  <a class="card" href="deposit.php"><h3>Ingresar dinero</h3><p>Depósito simple a tu cuenta.</p></a>
-  <a class="card" href="cards.php"><h3>Tarjetas</h3><p>Generar, pausar, eliminar, denunciar.</p></a>
-  <a class="card" href="tickets.php"><h3>Tickets</h3><p>Soporte y consultas.</p></a>
-  <a class="card" href="transfer.php"><h3>Transferencias</h3><p>Entre cuentas del banco.</p></a>
-  <a class="card" href="topup_sube.php"><h3>Recarga SUBE</h3><p>Crédito para transporte.</p></a>
-  <a class="card" href="topup_mobile.php"><h3>Recarga móvil</h3><p>Tu línea.</p></a>
-  <a class="card" href="cbu.php"><h3>CBU / Alias</h3><p>Ver y modificar alias.</p></a>
-  <a class="card" href="accounts.php"><h3>Abrir cuentas</h3><p>Pesos, dólares, corrientes.</p></a>
-  <a class="card" href="settings.php"><h3>Configuración</h3><p>Perfil y ajustes.</p></a>
+<?php require __DIR__ . '/../includes/guard_user.php'; ?>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Panel — CreditOrg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/main.css">
+</head>
+<body class="co-body">
+
+<header class="co-header">
+  <div class="co-wrap co-header__in">
+    <a class="co-brand" href="../index.php">
+      <span class="co-brand__badge">CO</span><span class="co-brand__name">CreditOrg</span>
+    </a>
+    <nav class="co-nav">
+      <ul class="co-nav__links">
+        <li><a class="co-nav__link" href="accounts.php">Cuentas</a></li>
+        <li><a class="co-nav__link" href="transfer.php">Transferir</a></li>
+        <li><a class="co-nav__link" href="cards.php">Tarjetas</a></li>
+        <li><a class="co-nav__link" href="tickets.php">Ayuda</a></li>
+        <li><a class="co-nav__link" href="profile.php">Perfil</a></li>
+      </ul>
+      <div class="co-nav__cta">
+        <span class="co-muted">Hola, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <a class="co-btn" href="../logout.php">Salir</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="co-wrap">
+  <h1 class="co-ttl">Panel</h1>
+  <div class="co-grid co-grid--3">
+    <a class="co-card" href="accounts.php">
+      <h3>Cuentas</h3>
+      <p class="co-muted">Ver saldos, CBU/Alias y abrir nuevas cuentas.</p>
+    </a>
+    <a class="co-card" href="transfer.php">
+      <h3>Transferencias</h3>
+      <p class="co-muted">Enviar dinero a cuentas del banco.</p>
+    </a>
+    <a class="co-card" href="cards.php">
+      <h3>Tarjetas</h3>
+      <p class="co-muted">Generar, pausar o denunciar tarjetas.</p>
+    </a>
+    <a class="co-card" href="tickets.php">
+      <h3>Tickets</h3>
+      <p class="co-muted">Crear y seguir consultas.</p>
+    </a>
+    <a class="co-card" href="profile.php">
+      <h3>Perfil</h3>
+      <p class="co-muted">Actualizar datos y contraseña.</p>
+    </a>
+  </div>
 </main>
-</body></html>
+
+<footer class="co-footer">
+  <div class="co-wrap co-footer__in">
+    <div></div>
+    <small class="co-copy">© <?php echo date('Y'); ?> CreditOrg</small>
+  </div>
+</footer>
+
+</body>
+</html>

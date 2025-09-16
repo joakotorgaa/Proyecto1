@@ -1,26 +1,30 @@
 <?php
+// api/login.php
 session_start();
-header('Content-Type: text/html; charset=utf-8'); // redirigimos, no JSON 
+require __DIR__ . '/_conn.php';
 
-$usuario    = trim($_POST['usuario'] ?? '');
-$contrasena = (string)($_POST['contrasena'] ?? '');
-if ($usuario === '' || $contrasena === '') { header('Location: ../login.php?e=1'); exit; }
+$username = trim($_POST['username'] ?? '');
+$password = trim($_POST['password'] ?? '');
 
-require __DIR__.'/_conn.php';
+if ($username === '' || $password === '') {
+  header('Location: ../login.php?error=1'); exit;
+}
 
-$stmt = $mysqli->prepare("SELECT id, username, password, is_admin FROM users WHERE username=? LIMIT 1");
-$stmt->bind_param('s', $usuario);
+// ⚠️ Versión simple sin hash (como pediste antes)
+$stmt = $mysqli->prepare("SELECT id, username, email, is_admin, password FROM users WHERE username=? LIMIT 1");
+$stmt->bind_param('s', $username);
 $stmt->execute();
 $res = $stmt->get_result();
 $user = $res->fetch_assoc();
 
-if(!$user || $user['password'] !== $contrasena){
-  header('Location: ../login.php?e=2'); exit;
+if (!$user || $user['password'] !== $password) {
+  header('Location: ../login.php?error=1'); exit;
 }
 
-$_SESSION['user_id'] = (int)$user['id'];
+$_SESSION['user_id']  = (int)$user['id'];
 $_SESSION['username'] = $user['username'];
-$_SESSION['is_admin'] = ((int)$user['is_admin']===1);
+$_SESSION['email']    = $user['email'];
+$_SESSION['is_admin'] = (int)$user['is_admin'];
 
-if($_SESSION['is_admin']) header('Location: ../admin/'); else header('Location: ../user/');
+header('Location: ' . ((int)$user['is_admin'] ? '../admin/' : '../user/'));
 exit;
