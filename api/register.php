@@ -1,22 +1,49 @@
 <?php
-header('Content-Type: text/html; charset=utf-8'); 
+// api/register.php
+session_start();
+require __DIR__ . '/_conn.php';
 
-$username = trim($_POST['username'] ?? '');
-$email    = trim($_POST['email'] ?? '');
-$password = (string)($_POST['password'] ?? '');
+// Campos
+$first_name = trim($_POST['first_name'] ?? '');
+$last_name  = trim($_POST['last_name'] ?? '');
+$email      = trim($_POST['email'] ?? '');
+$username   = trim($_POST['username'] ?? '');
+$phone      = trim($_POST['phone'] ?? '');
+$birthdate  = trim($_POST['birthdate'] ?? '');
+$password   = trim($_POST['password'] ?? '');
 
-if($username==='' || $email==='' || $password===''){ header('Location: ../register.php?e=1'); exit; }
-if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ header('Location: ../register.php?e=em'); exit; }
+// Validación básica
+if ($first_name === '' || $last_name === '' || $email === '' || $username === '' ||
+    $phone === '' || $birthdate === '' || $password === '') {
+  header('Location: ../register.php?error=bad'); exit;
+}
 
-require __DIR__.'/_conn.php';
-
-$stmt = $mysqli->prepare("SELECT id FROM users WHERE username=? OR email=? LIMIT 1");
-$stmt->bind_param('ss', $username, $email);
+// Duplicados
+$stmt = $mysqli->prepare("SELECT id FROM users WHERE username=? LIMIT 1");
+$stmt->bind_param('s', $username);
 $stmt->execute();
-if($stmt->get_result()->fetch_assoc()){ header('Location: ../register.php?e=ex'); exit; }
+if ($stmt->get_result()->fetch_assoc()) {
+  header('Location: ../register.php?error=dup_user'); exit;
+}
+$stmt = $mysqli->prepare("SELECT id FROM users WHERE email=? LIMIT 1");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+if ($stmt->get_result()->fetch_assoc()) {
+  header('Location: ../register.php?error=dup_mail'); exit;
+}
 
-$stmt = $mysqli->prepare("INSERT INTO users (username, email, password, is_admin) VALUES (?,?,?,0)");
-$stmt->bind_param('sss', $username, $email, $password);
-if(!$stmt->execute()){ header('Location: ../register.php?e=wr'); exit; }
+// Inserción (sin hash, por pedido)
+$stmt = $mysqli->prepare("
+  INSERT INTO users (first_name, last_name, email, username, phone, birthdate, password, is_admin, created_at)
+  VALUES (?, ?, ?, ?, ?, ?, ?, 0, NOW())
+");
+if (!$stmt) { header('Location: ../register.php?error=server'); exit; }
+$stmt->bind_param('sssssss', $first_name, $last_name, $email, $username, $phone, $birthdate, $password);
+$ok = $stmt->execute();
 
+if (!$ok) {
+  header('Location: ../register.php?error=server'); exit;
+}
+
+// Redirigimos al login con mensaje de éxito
 header('Location: ../login.php?ok=1'); exit;

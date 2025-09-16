@@ -133,7 +133,7 @@ html,body{margin:0}
 .co-auth__header{position:sticky;top:0;z-index:5;background:transparent}
 .co-auth__header .co-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--co-blue);font-weight:800;margin:20px 16px}
 
-.co-auth__wrap{display:flex;align-items:center;justify-content:center;padding:24px 16px}
+.co-auth__wrap{display:flex;align-items:center;justify-content:center;padding:1px 16px}
 .co-auth__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;max-width:1080px;width:100%}
 
 .co-auth__intro{padding:18px}
@@ -146,7 +146,7 @@ html,body{margin:0}
 .co-auth__card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(2,6,23,.12)}
 .co-auth__title{margin:0 0 8px}
 
-.co-form{display:grid;gap:12px}
+.co-form{display:grid;gap:2px}
 .co-field{display:grid;gap:6px}
 .co-field--pwd{position:relative}
 .co-eye{position:absolute;right:10px;top:36px;width:36px;height:36px;border:1px solid var(--co-line);border-radius:10px;background:#fff;cursor:pointer}
