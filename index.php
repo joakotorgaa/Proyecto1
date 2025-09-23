@@ -192,7 +192,7 @@
         <button class="co-btn co-btn--primary" type="submit">Enviar</button>
         <a class="co-btn co-btn--ghost" href="#top">Cancelar</a>
       </div>
-      <p class="co-muted">Al enviar, aceptás ser contactadx por el equipo.</p>
+      <p class="co-muted">Al enviar, aceptás ser contactado por el equipo.</p>
     </form>
   </section>
 

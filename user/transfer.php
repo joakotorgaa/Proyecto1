@@ -41,7 +41,7 @@ $err = $_GET['error'] ?? null;
         <label class="co-label">Alias / CBU / CVU</label>
         <input class="co-input" id="dest-key" placeholder="Ej: mi.alias.banco o 01701234...">
       </div>
-      <div class="co-actions" style="align-items:end">
+      <div class="co-actions" style="align-items:center">
         <button class="co-btn co-btn--primary" id="btn-lookup" type="button">Buscar</button>
       </div>
     </div>
@@ -114,7 +114,7 @@ btn.addEventListener('click', async () => {
   const fd = new FormData(); fd.append('key', key);
   const res = await fetch('../api/account_lookup.php', {method:'POST', body: fd});
   const data = await res.json();
-  if (!data.ok){ alert('No encontramos esa cuenta.'); return; }
+  if (!data.ok){ alert('Cuenta no encontrada. Verifica el Alias/CBU.'); return; }
 
   // Llenar tarjeta destino
   card.classList.add('show');

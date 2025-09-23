@@ -22,11 +22,12 @@ $accounts = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     <a class="co-brand" href="index.php"><span class="co-brand__badge">CO</span><span class="co-brand__name">CreditOrg</span></a>
     <nav class="co-nav">
       <ul class="co-nav__links">
-        <li><a class="co-nav__link" href="index.php">Panel</a></li>
-        <li><a class="co-nav__link" href="transfer.php">Transferir</a></li>
-        <li><a class="co-nav__link" href="cards.php">Tarjetas</a></li>
+        <li><a class="co-nav__link" href="user/index.php">Panel</a></li>
+        <li><a class="co-nav__link" href="user/transfer.php">Transferir</a></li>
+        <li><a class="co-nav__link" href="user/cards.php">Tarjetas</a></li>
       </ul>
-      <div class="co-nav__cta"><a class="co-btn" href="../logout.php">Salir</a></div>
+      <div class="co-nav__cta"><a class="co-btn" href="../logout.php">Salir</a>
+      
     </nav>
   </div>
 </header>

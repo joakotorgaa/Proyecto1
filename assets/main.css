@@ -28,7 +28,7 @@ html,body{margin:0}
 /* ====== BOTONES ====== */
 .co-btn{padding:10px 14px;border-radius:10px;border:1px solid transparent;background:#fff;color:var(--co-ink);text-decoration:none;display:inline-block;transition:.15s ease}
 .co-btn:hover{transform:translateY(-1px);opacity:.95}
-.co-btn--primary{background:var(--co-blue);color:#fff}
+.co-btn--primary{background:var(--co-blue);color:#fff }
 .co-btn--outline{border-color:var(--co-blue);color:var(--co-blue);background:transparent}
 .co-btn--ghost{border-color:transparent;background:transparent}
 
