@@ -36,12 +36,12 @@ $err = $_GET['error'] ?? null;
   <!-- PASO 1: Buscar destino -->
   <section class="co-card step">
     <h3>1) Ingresá Alias / CBU / CVU de destino</h3>
-    <div class="co-grid co-grid--2">
+    <div class="co-grid co-grid--2" style="align-items:end;">
       <div>
         <label class="co-label">Alias / CBU / CVU</label>
         <input class="co-input" id="dest-key" placeholder="Ej: mi.alias.banco o 01701234...">
       </div>
-      <div class="co-actions" style="align-items:center">
+      <div class="co-actions" style="align-items:end;display:flex;">
         <button class="co-btn co-btn--primary" id="btn-lookup" type="button">Buscar</button>
       </div>
     </div>
@@ -76,13 +76,15 @@ $err = $_GET['error'] ?? null;
         <label class="co-label">Monto</label>
         <input class="co-input" type="number" step="0.01" min="0.01" name="amount" id="amount" required disabled>
       </div>
-      <div class="co-grid" style="grid-template-columns:1fr">
-        <label class="co-label">Concepto (opcional)</label>
-        <input class="co-input" name="concept" maxlength="80" placeholder="Ej: pago servicios" disabled id="concept">
-      </div>
-      <div class="co-actions">
-        <button class="co-btn co-btn--primary" type="submit" id="submit-btn" disabled>Transferir</button>
-        <a class="co-btn co-btn--ghost" href="index.php">Cancelar</a>
+      <div style="display:flex;align-items:end;gap:12px;">
+        <div style="flex:1;">
+          <label class="co-label">Concepto (opcional)</label>
+          <input class="co-input" name="concept" maxlength="80" placeholder="Ej: pago servicios" disabled id="concept">
+        </div>
+        <div class="co-actions" style="align-items:end;display:flex;gap:8px;">
+          <button class="co-btn co-btn--primary" type="submit" id="submit-btn" disabled>Transferir</button>
+          <a class="co-btn co-btn--ghost" href="index.php">Cancelar</a>
+        </div>
       </div>
     </form>
   </section>

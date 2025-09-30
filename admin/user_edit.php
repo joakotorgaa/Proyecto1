@@ -22,28 +22,59 @@ $stmt=$mysqli->prepare("SELECT id,username,email,is_admin,created_at FROM users 
 $stmt->bind_param('i',$id); $stmt->execute(); $u=$stmt->get_result()->fetch_assoc();
 if(!$u){ header('Location: users.php'); exit; }
 ?>
-<!doctype html><html lang="es"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin | Editar usuario</title>
-<link rel="stylesheet" href="../assets/main.css"></head><body>
-<header><div class="header-inner">
-  <a class="logo" href="users.php"><span class="badge">CO</span> Admin</a>
-  <nav class="nav"><a class="btn" href="users.php">Volver</a></nav>
-</div></header>
-<main class="container">
-  <div class="card" style="max-width:640px;margin:0 auto;">
-    <h2>Editar usuario #<?php echo $u['id']; ?></h2>
-    <?php if($msg) echo '<p style="color:green">'.$msg.'</p>'; ?>
-    <form method="post">
-      <label>Usuario</label><input class="input" name="username" value="<?php echo htmlspecialchars($u['username']); ?>" required>
-      <label>Email</label><input class="input" type="email" name="email" value="<?php echo htmlspecialchars($u['email']); ?>" required>
-      <label><input type="checkbox" name="is_admin" <?php echo $u['is_admin']?'checked':''; ?>> Admin</label>
-      <label>Nueva contraseña (opcional)</label><input class="input" name="password" placeholder="Dejar vacío para no cambiar">
-      <div style="margin-top:10px;display:flex;gap:8px;">
-        <button class="btn btn-primary">Guardar</button>
-        <a class="btn btn-outline" href="users.php">Cancelar</a>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Editar usuario</title>
+  <link rel="stylesheet" href="../assets/main.css">
+</head>
+<body class="co-body">
+<header class="co-header">
+  <div class="co-wrap co-header__in">
+    <a class="co-brand" href="users.php"><span class="co-brand__badge">CO</span><span class="co-brand__name">Admin</span></a>
+    <nav class="co-nav">
+      <ul class="co-nav__links">
+        <li><a class="co-nav__link" href="users.php">Usuarios</a></li>
+        <li><a class="co-nav__link" href="user_accounts.php">Cuentas por usuario</a></li>
+      </ul>
+      <div class="co-nav__cta">
+        <span class="co-muted">Administrador</span>
+        <a class="co-btn" href="../logout.php">Salir</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="co-wrap">
+  <div class="co-card" style="max-width:640px;margin:0 auto;">
+    <h2 class="co-ttl">Editar usuario #<?php echo $u['id']; ?></h2>
+    <?php if($msg) echo '<div class="co-msg co-msg--ok" style="margin-bottom:10px">'.$msg.'</div>'; ?>
+    <form method="post" class="co-form">
+      <div class="co-field">
+        <label class="co-label">Usuario</label>
+        <input class="co-input" name="username" value="<?php echo htmlspecialchars($u['username']); ?>" required>
+      </div>
+      <div class="co-field">
+        <label class="co-label">Email</label>
+        <input class="co-input" type="email" name="email" value="<?php echo htmlspecialchars($u['email']); ?>" required>
+      </div>
+      <div class="co-field">
+        <label class="co-label"><input type="checkbox" name="is_admin" <?php echo $u['is_admin']?'checked':''; ?>> Admin</label>
+      </div>
+      <div class="co-field">
+        <label class="co-label">Nueva contraseña (opcional)</label>
+        <input class="co-input" name="password" placeholder="Dejar vacío para no cambiar">
+      </div>
+      <div class="co-actions" style="margin-top:10px;display:flex;gap:8px;">
+        <button class="co-btn co-btn--primary">Guardar</button>
+        <a class="co-btn co-btn--ghost" href="users.php">Cancelar</a>
       </div>
     </form>
   </div>
 </main>
-</body></html>
+<footer class="co-footer">
+  <div class="co-wrap co-footer__in"><div></div><small class="co-copy">© <?php echo date('Y'); ?> CreditOrg</small></div>
+</footer>
+</body>
+</html>

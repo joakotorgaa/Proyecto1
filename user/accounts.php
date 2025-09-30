@@ -17,20 +17,7 @@ $accounts = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 </head>
 <body class="co-body">
 
-<header class="co-header">
-  <div class="co-wrap co-header__in">
-    <a class="co-brand" href="index.php"><span class="co-brand__badge">CO</span><span class="co-brand__name">CreditOrg</span></a>
-    <nav class="co-nav">
-      <ul class="co-nav__links">
-        <li><a class="co-nav__link" href="user/index.php">Panel</a></li>
-        <li><a class="co-nav__link" href="user/transfer.php">Transferir</a></li>
-        <li><a class="co-nav__link" href="user/cards.php">Tarjetas</a></li>
-      </ul>
-      <div class="co-nav__cta"><a class="co-btn" href="../logout.php">Salir</a>
-      
-    </nav>
-  </div>
-</header>
+<?php include __DIR__ . '/../includes/global_nav.php'; ?>
 
 <main class="co-wrap">
   <h1 class="co-ttl">Mis cuentas</h1>
@@ -54,8 +41,8 @@ $accounts = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     <div>
       <label class="co-label">Tipo</label>
       <select class="co-input" name="type" required>
-        <option value="Caja de ahorro">Caja de ahorro</option>
-        <option value="Cuenta corriente">Cuenta corriente</option>
+        <option value="caja_ahorro">Caja de ahorro</option>
+        <option value="cuenta_corriente">Cuenta corriente</option>
       </select>
     </div>
     <div>

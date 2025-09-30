@@ -3,8 +3,18 @@ $uid = (int)$_SESSION['user_id'];
 $cheques = $mysqli->prepare("SELECT id,account_id,amount,payee,status,issued_at FROM cheques WHERE user_id=? ORDER BY id DESC");
 $cheques->bind_param('i',$uid); $cheques->execute(); $cheques=$cheques->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
-<!doctype html><html><head><meta charset="utf-8"><title>Cheques</title><link rel="stylesheet" href="../assets/main.css"></head><body>
-<?php include __DIR__ . '/_nav.php'; ?>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cheques</title>
+  <link rel="stylesheet" href="../assets/main.css">
+  <style>
+    body.co-body { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+</head>
+<body class="co-body">
+<?php include __DIR__ . '/../includes/global_nav.php'; ?>
 <main class="co-wrap">
   <h1 class="co-ttl">Cheques</h1>
   <form class="co-card" method="post" action="../api/cheque_issue.php">

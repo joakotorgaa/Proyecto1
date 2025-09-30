@@ -62,6 +62,20 @@ $txs = safe_all($mysqli,
       <h1 class="co-ttl" style="margin:0">Hola, <?php echo htmlspecialchars($who); ?></h1>
       <p class="co-muted" style="margin:.2rem 0 0">Este es un resumen de tu banca en CreditOrg.</p>
 
+      <!-- Bloque de bienvenida y recorrido rápido -->
+      <div class="co-card" style="background:#f7faff;border:1px solid #dbeafe;margin:16px 0 0 0">
+        <h3 style="margin-top:0">Bienvenido a tu panel</h3>
+        <p style="margin-bottom:8px">Recorrido rápido por los módulos principales:</p>
+        <ol style="padding-left:18px;margin:0">
+          <li><b>Cuentas</b>: ver CBU y alias; abrir nuevas.</li>
+          <li><b>Transferir</b>: envíos internos entre clientes.</li>
+          <li><b>Tarjetas</b>: generar, pausar, denunciar.</li>
+          <li><b>Préstamos</b>: simular y solicitar.</li>
+          <li><b>Tickets</b>: soporte con hilos.</li>
+        </ol>
+      </div>
+      <!-- Fin bloque bienvenida -->
+
       <div class="dash-actions">
         <a class="co-btn co-btn--primary" href="transfer.php">Transferir</a>
         <a class="co-btn co-btn--outline" href="accounts.php">Abrir/ver cuentas</a>
@@ -149,23 +163,7 @@ try {
 } catch(Throwable $e){ $showTour=false; }
 ?>
 <?php if($showTour): ?>
-<div id="co-tour" class="tour-overlay" role="dialog" aria-modal="true">
-  <div class="tour-card">
-    <h3>Bienvenido a tu panel</h3>
-    <p>Recorrido rápido por los módulos principales:</p>
-    <ol>
-      <li><b>Cuentas</b>: ver CBU y alias; abrir nuevas.</li>
-      <li><b>Transferir</b>: envíos internos entre clientes.</li>
-      <li><b>Tarjetas</b>: generar, pausar, denunciar.</li>
-      <li><b>Préstamos</b>: simular y solicitar.</li>
-      <li><b>Tickets</b>: soporte con hilos.</li>
-    </ol>
-    <div style="display:flex;gap:8px;justify-content:flex-end">
-      <button id="tour-skip" class="co-btn">Saltar</button>
-      <button id="tour-gotit" class="co-btn co-btn--primary">Entendido</button>
-    </div>
-  </div>
-</div>
+
 <script>
 document.getElementById('tour-gotit').addEventListener('click', () => {
   fetch('../api/tour_seen.php',{method:'POST'}).then(()=>document.getElementById('co-tour').remove());

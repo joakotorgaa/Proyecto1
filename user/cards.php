@@ -3,7 +3,7 @@ require __DIR__ . '/../includes/guard_user.php';
 require __DIR__ . '/../api/_conn.php';
 $uid = (int)$_SESSION['user_id'];
 
-$cards = $mysqli->prepare("SELECT id,label,pan,last4,exp_month,exp_year,status FROM cards WHERE user_id = ?");
+$cards = $mysqli->prepare("SELECT id, label, pan, last4, exp_month, exp_year, status FROM cards WHERE user_id = ?");
 $cards->bind_param('i',$uid);
 $cards->execute();
 $cards = $cards->get_result()->fetch_all(MYSQLI_ASSOC);

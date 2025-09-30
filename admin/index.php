@@ -18,7 +18,7 @@
         <li><a class="co-nav__link" href="user_accounts.php">Cuentas por usuario</a></li>
       </ul>
       <div class="co-nav__cta">
-        <span class="co-muted">Admin: <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <span class="co-muted">Administrador</span>
         <a class="co-btn" href="../logout.php">Salir</a>
       </div>
     </nav>

@@ -30,15 +30,11 @@ if ($q !== '') {
 
 <main class="co-wrap">
   <h1 class="co-ttl">Usuarios</h1>
-  <form class="co-card co-grid co-grid--2" method="get">
-    <div>
-      <label class="co-label">Buscar</label>
-      <input class="co-input" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Usuario o email">
-    </div>
-    <div class="co-actions">
-      <button class="co-btn co-btn--primary" type="submit">Buscar</button>
-      <a class="co-btn co-btn--ghost" href="users.php">Limpiar</a>
-    </div>
+  <form class="co-card" method="get" style="display:flex;align-items:center;gap:12px;">
+    <label class="co-label" style="margin-bottom:0;">Buscar</label>
+    <input class="co-input" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Usuario o email" style="flex:1;">
+    <button class="co-btn co-btn--primary" type="submit">Buscar</button>
+    <a class="co-btn co-btn--ghost" href="users.php">Limpiar</a>
   </form>
 
   <div class="co-grid co-grid--3" style="margin-top:12px">
