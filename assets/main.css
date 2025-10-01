@@ -171,3 +171,22 @@ html,body{margin:0}
   .co-auth__grid{grid-template-columns:1fr}
   .co-auth__intro{order:2;text-align:center}
 }
+/* Alerts genéricos */
+.co-alert{padding:10px 12px;border-radius:10px;border:1px solid}
+.co-alert.ok{background:#e6fbe6;border-color:#bff0bf;color:#127c12}
+.co-alert.err{background:#fdecec;border-color:#f3c1c1;color:#b42323}
+
+/* Pasos */
+.co-step h3{margin:0 0 6px}
+.co-step .co-actions{margin-top:6px}
+
+/* Navbar burger */
+.co-burger{display:none;flex-direction:column;gap:4px;background:transparent;border:0}
+.co-burger span{display:block;width:22px;height:2px;background:#0a2c75}
+@media(max-width:960px){
+  .co-burger{display:flex}
+  .co-nav__links{display:none}
+  body.co-nav-open .co-nav__links{display:block;position:absolute;left:0;right:0;top:64px;background:#fff;border-top:1px solid var(--co-line);padding:10px}
+  body.co-nav-open .co-nav__links li{margin:8px 0}
+  .co-nav__cta{display:none}
+}

@@ -13,8 +13,12 @@ if ($from<=0 || $to<=0 || $amount<=0) { header('Location: ../user/transfer.php?e
 if ($from === $to) { header('Location: ../user/transfer.php?error=same'); exit; }
 
 /* Cargar cuentas */
-$stmt = $mysqli->prepare("SELECT id,user_id,balance,currency FROM accounts WHERE id IN (?,?)");
-$stmt->bind_param('ii',$from,$to);
+// ...
+$stmt = $mysqli->prepare("INSERT INTO transactions (user_id,user_from,user_to,account_from,account_to,amount,currency,concept,created_at) VALUES (?,?,?,?,?,?,?,?,NOW())");
+/* tipos: i i i i i d s s -> 'iiiiidss' */
+$stmt->bind_param('iiiiidss', $uid, $user_from, $user_to, $from, $to, $amount, $currency, $concept);
+// ...
+
 $stmt->execute();
 $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 if (count($rows) < 2) { header('Location: ../user/transfer.php?error=notfound'); exit; }
